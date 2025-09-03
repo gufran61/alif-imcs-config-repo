@@ -1,0 +1,3 @@
+alif:
+  common:
+    property: "I am a common property available to all services!"
