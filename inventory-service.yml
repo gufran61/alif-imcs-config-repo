@@ -1,0 +1,33 @@
+# Server Port for Inventory Service
+server:
+  port: 8081 # Hum is service ko port 8081 par chalayenge
+
+# Database Configuration
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/alif_inventory_db?createDatabaseIfNotExist=true
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update # Jab service start hogi, hibernate automatically tables bana/update kar dega
+    show-sql: true # Console par saari SQL queries print karega (development ke liye accha hai)
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+# Eureka Client Configuration
+eureka:
+  instance:
+    # Eureka dashboard me is service ka naam kaisa dikhega
+    prefer-ip-address: true
+    hostname: localhost
+  client:
+    # Hum service ko bata rahe hain ki Eureka Server kahan chal raha hai.
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# Common property from application.yml will also be loaded
+alif:
+  custom:
+    property: "I am a property specific to Inventory Service!"
